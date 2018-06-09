@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 #             DELETE /recipes/:id(.:format)      recipes#destroy
 
 	get "/recipes", to: "recipes#index"
+	## as: "recipe" will add recipe path to the prefix
+	get "/recipes/:id", to: "recipes#show", as: "recipe"
 
 end
 

@@ -25,6 +25,15 @@ class RecipesTest < ActionDispatch::IntegrationTest
 		assert_match @recipe2.name, response.body
 	end
 
+
+	test "should get recipes show" do
+		## need to pass in the recipe object who's url we are going to
+		get recipe_path(@recipe)
+		## recipes controller show action
+		assert_template "recipes/show"
+		assert_match "a[href=?]", recipe_path(@recipe), text: @recipe.name
+		assert_match "a[href=?]", recipe_path(@recip2), text: @recip2.name
+	end
   # test "the truth" do
   #   assert true
   # end
